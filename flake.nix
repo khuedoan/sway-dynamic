@@ -11,6 +11,8 @@
         devShells.default = mkShell {
           packages = [
             cargo
+            clippy
+            rustfmt
           ];
         };
       }

@@ -3,7 +3,11 @@ use swayipc::{Event, Node, NodeType, WindowChange};
 
 use clap::Parser;
 
-fn switch_tiling(conn: &mut Connection, workspaces: &[i32], master_ratio: f32) -> Result<(), String> {
+fn switch_tiling(
+    conn: &mut Connection,
+    workspaces: &[i32],
+    master_ratio: f32,
+) -> Result<(), String> {
     // Check if focused workspace is in "allowed list".
     // If `workspaces` is empty, skip allow all workspaces.
     if !workspaces.is_empty() {
@@ -45,24 +49,22 @@ fn switch_tiling(conn: &mut Connection, workspaces: &[i32], master_ratio: f32) -
         return Ok(());
     }
 
-    // Define the master and stack areas
-    let master_count = 1; // You can adjust this if you want more master windows
+    // Define the master and stack areas, you can adjust this if you want more master windows
+    let master_count = 1;
+
     // TODO improve the logic
     let _stack_count = num_windows - master_count;
 
     // Determine the layout for the master area and stack area
     for (i, node) in nodes.iter().enumerate() {
-        let layout_cmd = if i < master_count {
-            "splith"
-        } else {
-            "splitv"
-        };
+        let layout_cmd = if i < master_count { "splith" } else { "splitv" };
 
-        conn.run_command(format!("[con_id={}] {}", node.id, layout_cmd)).unwrap();
+        conn.run_command(format!("[con_id={}] {}", node.id, layout_cmd))
+            .unwrap();
     }
 
     // Adjust the size of the master area
-    if let Some(master_node) = nodes.get(0) {
+    if let Some(master_node) = nodes.first() {
         // TODO improve the logic
         let _resize_cmd = format!(
             "[con_id={}] resize set width {}ppt",
@@ -92,7 +94,7 @@ fn main() -> Result<(), std::io::Error> {
     let mut conn = Connection::new().unwrap();
     for event in Connection::new()
         .unwrap()
-        .subscribe(&[EventType::Window])
+        .subscribe([EventType::Window])
         .unwrap()
     {
         match event.unwrap() {
