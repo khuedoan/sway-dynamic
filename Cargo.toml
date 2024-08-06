@@ -6,9 +6,5 @@ description = "Dynamic window management for Sway WM (similar to dwm)"
 edition = "2018"
 
 [dependencies]
-swayipc = "3.0"
-
-[dependencies.clap]
-version = "3.0"
-default-features = false
-features = ["std", "derive"]
+swayipc = "3"
+clap = { version = "4", default-features = false, features = ["std", "derive"] }
