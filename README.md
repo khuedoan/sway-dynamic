@@ -1,15 +1,31 @@
-# autotiling-rs
-When used on sway (and possibly i3), this automatically alternates the container layout between horizontal and vertical for successive new containers.
+# sway-dynamic
+
+When used on Sway, this adds a dynamic tiling feature similar to [dwm](https://dwm.suckless.org):
+
+> In tiled layout windows are managed in a master and stacking area.
+> The master area contains the window which currently needs most attention, whereas the stacking area contains all other windows.
+
+```
++-------------+------------+
+|             |     S1     |
+|             +------------+
+|      M      |     S2     |
+|             +------------+
+|             |     S3     |
++-------------+------------+
+```
 
 ## Usage
-Simply run the program `autotiling-rs`. To start it automatically, put it in your sway config like this: `exec autotiling-rs`.
 
-For more info run `autotiling-rs --help`.
+Simply run the program `sway-dynamic`. To start it automatically, put it in your sway config like this: `exec sway-dynamic`.
+
+For more info run `sway-dynamic --help`.
 
 ## Installation
 
-Arch Linux: [autotiling-rs](https://archlinux.org/packages/?q=autotiling-rs)
+TBD
 
-Arch Linux (AUR): [autotiling-rs-git](https://aur.archlinux.org/packages/autotiling-rs-git).
+## Acknowledgments
 
-Nix: [autotiling-rs](https://search.nixos.org/packages?channel=unstable&show=autotiling-rs&from=0&size=50&sort=relevance&type=packages&query=autotiling-rs)
+- Forked from [ammgws/autotiling-rs](https://github.com/ammgws/autotiling-rs), which alternates the container layout between horizontal and vertical for successive new containers
+- [dwm](https://dwm.suckless.org)'s dynamic tiling layout

@@ -1,8 +1,8 @@
 [package]
-name = "autotiling-rs"
-version = "0.1.3"
-authors = ["Jason Nader <jason.nader@protonmail.com>"]
-description = "Autotiling for sway (and possibly i3)"
+name = "sway-dynamic"
+version = "0.2.0"
+authors = ["Jason Nader <jason.nader@protonmail.com>", "Khue Doan <mail@khuedoan.com>"]
+description = "Dynamic window management for Sway WM (similar to dwm)"
 edition = "2018"
 
 [dependencies]
